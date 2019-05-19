@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="jp.co.aimsoft.integration.mapper.MUserMapper" >
+  <insert id="register" parameterType="jp.co.aimsoft.integration.entity.MUserEntity">
+      INSERT INTO m_user (
+        id,
+        name,
+        age,
+        belong_group
+      )
+      VALUES (
+        #{id},
+        #{name},
+        #{age},
+        #{belongGroup}
+      )
+  </insert>
+  <select id="findOne" parameterType="jp.co.aimsoft.integration.entity.MUserEntity" resultType="jp.co.aimsoft.integration.entity.MUserEntity">
+      SELECT id, name, age, belong_group AS belongGroup
+      FROM
+        m_user
+      WHERE
+        id = #{id}
+   </select>
+   <select id="findAll" resultType="jp.co.aimsoft.integration.entity.MUserEntity">
+      SELECT id, name, age, belong_group AS belongGroup
+      FROM
+        m_user
+   </select>
+   <update id="update" parameterType="jp.co.aimsoft.integration.entity.MUserEntity">
+      UPDATE m_user
+      SET 
+        id = #{id}
+        ,name = #{name}
+        ,age = #{age}
+        ,belong_group = #{belongGroup}
+      WHERE
+        id = #{id}
+   </update>
+   <delete id="deleteOne" parameterType="jp.co.aimsoft.integration.entity.MUserEntity">
+      DELETE FROM m_user
+      WHERE
+        id = #{id}
+   </delete>
+</mapper>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>エイムソフト　研修システム</title>
+  </head>
+<body>
+  <h3>ユーザー登録画面</h3>
+  <p data-th-if="${errorMessage != null}" data-th-text="${errorMessage}" style="color: red;" />
+  <form method="POST" data-th-action="@{/user/registration}">
+    <p>社員ID：<input type="text" name="id" data-th-value="${form.id}" /></p>
+    <p>社員名：<input type="text" name="name" data-th-value="${form.name}" /></p>
+    <p>年齢：<input type="text" name="age" data-th-value="${form.age}" /></p>
+    <p>所属グループ：<input type="text" name="belongGroup" data-th-value="${form.belongGroup}" /></p>
+    <button type="submit">登録！</button>
+  </form>
+  <p><a data-th-href="@{/}">トップへ戻る</a></p>
+</body>
+</html>

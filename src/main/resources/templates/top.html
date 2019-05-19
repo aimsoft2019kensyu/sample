@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>エイムソフト　研修システム</title>
+  </head>
+<body>
+  <p><a data-th-href="@{/user/registration/show}">ユーザー登録</a></p>
+  <p><a data-th-href="@{/user/update/show}">ユーザー情報更新</a></p>
+  <p><a data-th-href="@{/user/delete/show}">ユーザー削除</a></p>
+  <form method="POST" data-th-action="@{/user/list/show}">
+   <button type="submit">ユーザー一覧</button>
+  </form>
+</body>
+</html>

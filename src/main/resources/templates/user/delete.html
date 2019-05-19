@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>エイムソフト　研修システム</title>
+  </head>
+<body>
+  <h3>ユーザー削除画面</h3>
+  <p data-th-if="${errorMessage != null}" data-th-text="${errorMessage}" style="color: red;" />
+  <form method="POST" data-th-action="@{/user/delete}">
+  　　　<p>社員ID：<input type="text" name="id" data-th-value="${form.id}" /></p>
+    <button type="submit">削除！</button>
+　　</form>
+  <p><a data-th-href="@{/}">トップへ戻る</a></p>
+</body>
+</html>

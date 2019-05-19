@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>エイムソフト　研修システム</title>
+  </head>
+<body>
+  <h3>ユーザー一覧画面</h3>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 100px;"><p style="text-align:center; font-weight:700">社員ID</p></td>
+        <td style="width: 100px;"><p style="text-align:center; font-weight:700">社員名</p></td>
+        <td style="width: 100px;"><p style="text-align:center; font-weight:700">年齢</p></td>
+        <td style="width: 100px;"><p style="text-align:center; font-weight:700">所属グループ</p></td>
+      </tr>
+    </thead>
+    <tr data-th-each="user : ${userList}">
+      <td style="width: 100px;"><p style="text-align:center;" data-th-text="${user.id}"></p></td>
+      <td style="width: 100px;"><p style="text-align:center;" data-th-text="${user.name}"></p></td>
+      <td style="width: 100px;"><p style="text-align:center;" data-th-text="${user.age}"></p></td>
+      <td style="width: 100px;"><p style="text-align:center;" data-th-text="${user.belongGroup}"></p></td>
+    </tr>
+  </table>
+  <p><a data-th-href="@{/}">トップへ戻る</a></p>
+</body>
+</html>
