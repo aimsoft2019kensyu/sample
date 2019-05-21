@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import jp.co.aimsoft.business.model.MUser;
 import jp.co.aimsoft.common.constants.MessageConstant;
-import jp.co.aimsoft.common.constants.ProcessingResult;
 import jp.co.aimsoft.common.exception.BusinessException;
 import jp.co.aimsoft.integration.entity.MUserEntity;
 import jp.co.aimsoft.integration.mapper.MUserMapper;
@@ -21,7 +20,7 @@ public class UserServiceImpl implements UserService {
 	private MUserMapper mapper;
 
 	@Override
-	public ProcessingResult register(MUser user) {
+	public void register(MUser user) {
 
 		MUserEntity entity = createMUserEntity(user);
 
@@ -31,8 +30,6 @@ public class UserServiceImpl implements UserService {
 			// 一意制約違反発生時エラーを捕捉しエラー文言を書き換える
 			throw new BusinessException(MessageConstant.MSG_0001);
 		}
-
-		return ProcessingResult.SUCCESS;
 	}
 
 	@Override
@@ -51,7 +48,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public ProcessingResult update(MUser user) {
+	public void update(MUser user) {
 
 		MUserEntity entity = createMUserEntity(user);
 
@@ -63,12 +60,10 @@ public class UserServiceImpl implements UserService {
 		}
 
 		mapper.update(entity);
-
-		return ProcessingResult.SUCCESS;
 	}
 
 	@Override
-	public ProcessingResult deleteOne(MUser user) {
+	public void deleteOne(MUser user) {
 
 		MUserEntity entity = createMUserEntity(user);
 
@@ -80,8 +75,6 @@ public class UserServiceImpl implements UserService {
 		}
 
 		mapper.deleteOne(entity);
-
-		return ProcessingResult.SUCCESS;
 	}
 
 	/**
