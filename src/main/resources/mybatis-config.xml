@@ -2,7 +2,6 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
   <settings>
-    <setting name="logImpl" value="LOG4J"/>
     <setting name="jdbcTypeForNull" value="NULL"/>
     <!-- キャメルケースに対応させる。 -->
     <setting name="mapUnderscoreToCamelCase" value="true"/>

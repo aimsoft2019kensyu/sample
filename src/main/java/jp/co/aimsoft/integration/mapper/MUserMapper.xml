@@ -16,14 +16,14 @@
       )
   </insert>
   <select id="findOne" parameterType="jp.co.aimsoft.integration.entity.MUserEntity" resultType="jp.co.aimsoft.integration.entity.MUserEntity">
-      SELECT id, name, age, belong_group AS belongGroup
+      SELECT id, name, age, belong_group
       FROM
         m_user
       WHERE
         id = #{id}
    </select>
    <select id="findAll" resultType="jp.co.aimsoft.integration.entity.MUserEntity">
-      SELECT id, name, age, belong_group AS belongGroup
+      SELECT id, name, age, belong_group
       FROM
         m_user
    </select>

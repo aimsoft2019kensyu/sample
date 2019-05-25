@@ -2,6 +2,7 @@ package jp.co.aimsoft.presentation.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import jp.co.aimsoft.presentation.form.UserForm;
 @Controller
 public class UserController {
 
+	@Autowired
 	private UserService service;
 
 	@RequestMapping(value = "/user/registration/show", method = RequestMethod.GET)
