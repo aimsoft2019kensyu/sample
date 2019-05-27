@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>エイムソフト　研修システム</title>
+  </head>
+<body>
+  <h3>勤怠削除画面</h3>
+  <p data-th-if="${errorMessage != null}" data-th-text="${errorMessage}" style="color: red;" />
+  <form method="POST" data-th-action="@{/attendance/delete}">
+  　　　<p>社員ID：<input type="text" name="id" data-th-value="${form.id}" /></p>
+    <p>出退勤区分：
+      <select name="attendanceFlg" style="width: 100px;　padding-top: 5px; padding-bottom: 5px;">
+        <option value="0" data-th-selected="${form.attendanceFlg == '0'}">始業</option>
+        <option value="1" data-th-selected="${form.attendanceFlg == '1'}">終業</option>
+      </select>
+    </p>
+    <p>日付:
+      <select name="attendanceYear" style="width: 120px;　padding-top: 5px; padding-bottom: 5px;">
+        <option value=""></option>
+        <option data-th-each="year : ${form.yearList}" data-th-value="${year}" data-th-text="${year}"></option>
+      </select>年
+      <select name="attendanceMonth" style="width: 60px;　padding-top: 5px; padding-bottom: 5px;">
+        <option value=""></option>
+        <option data-th-each="month : ${form.monthList}" data-th-value="${month}" data-th-text="${month}"></option>
+      </select>月
+      <select name="attendanceDay" style="width: 60px;　padding-top: 5px; padding-bottom: 5px;">
+        <option value=""></option>
+        <option data-th-each="day : ${form.dayList}" data-th-value="${day}" data-th-text="${day}"></option>
+      </select>日
+    </p>
+    <button type="submit">削除！</button>
+　　</form>
+  <p><a data-th-href="@{/}">トップへ戻る</a></p>
+</body>
+</html>

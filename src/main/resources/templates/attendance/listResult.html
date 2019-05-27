@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>エイムソフト　研修システム</title>
+  </head>
+<body>
+  <h3>勤怠一覧画面</h3>
+  <table>
+    <thead>
+      <tr>
+        <td style="width: 100px;"><p style="text-align:center; font-weight:700">社員ID</p></td>
+        <td style="width: 100px;"><p style="text-align:center; font-weight:700">社員名</p></td>
+        <td style="width: 100px;"><p style="text-align:center; font-weight:700">出退勤区分</p></td>
+        <td style="width: 100px;"><p style="text-align:center; font-weight:700">日時</p></td>
+      </tr>
+    </thead>
+    <tr data-th-each="attendance : ${attendanceList}">
+      <td style="width: 100px;"><p style="text-align:center;" data-th-text="${attendance.id}"></p></td>
+      <td style="width: 100px;"><p style="text-align:center;" data-th-text="${attendance.name}"></p></td>
+      <td style="width: 100px;"><p style="text-align:center;" data-th-text="${attendance.attendanceFlg == '0' ? '始業' : '終業'}"></p></td>
+      <td style="width: 250px;"><p style="text-align:center;" data-th-text="${attendance.attendanceDate + ' ' + attendance.attendanceTime}"></p></td>
+    </tr>
+  </table>
+  <p><a data-th-href="@{/}">トップへ戻る</a></p>
+</body>
+</html>

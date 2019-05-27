@@ -5,11 +5,24 @@
     <title>エイムソフト　研修システム</title>
   </head>
 <body>
+　　<h4 style="margin-top: 0px;">ユーザー系</h4>
   <p><a data-th-href="@{/user/registration/show}">ユーザー登録</a></p>
-  <p><a data-th-href="@{/user/update/show}">ユーザー情報更新</a></p>
+  <p><a data-th-href="@{/user/update/show}">ユーザー更新</a></p>
   <p><a data-th-href="@{/user/delete/show}">ユーザー削除</a></p>
   <form method="POST" data-th-action="@{/user/list/show}">
    <button type="submit">ユーザー一覧</button>
   </form>
+  <hr />
+  <h4>勤怠系</h4>
+  <p><a data-th-href="@{/attendance/registration/show}">勤怠登録</a></p>
+  <p><a data-th-href="@{/attendance/update/show}">勤怠更新</a></p>
+  <p><a data-th-href="@{/attendance/delete/show}">勤怠削除</a></p>
+  <p><a data-th-href="@{/attendance/list/show}">勤怠一覧</a></p>
+  <hr />
+  <h4>給与系</h4>
+  <p><a data-th-href="@{/payment/registration/show}">給与登録</a></p>
+  <p><a data-th-href="@{/payment/update/show}">給与更新</a></p>
+  <p><a data-th-href="@{/payment/delete/show}">給与削除</a></p>
+  <p><a data-th-href="@{/payment/list/show}">給与一覧</a></p>
 </body>
 </html>

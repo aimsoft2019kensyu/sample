@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>エイムソフト　研修システム</title>
+  </head>
+<body>
+  <h3>勤怠一覧画面</h3>
+  <form method="POST" data-th-action="@{/attendance/list}">
+    <p>社員ID：<input type="text" name="id" value="" /></p>
+    <button type="submit">表示！</button>
+  </form>
+  <p><a data-th-href="@{/}">トップへ戻る</a></p>
+</body>
+</html>

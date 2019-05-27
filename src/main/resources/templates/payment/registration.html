@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>エイムソフト　研修システム</title>
+  </head>
+<body>
+  <h3>給与登録画面</h3>
+  <p data-th-if="${errorMessage != null}" data-th-text="${errorMessage}" style="color: red;" />
+  <form method="POST" data-th-action="@{/payment/registration}">
+    <p>社員ID：<input type="text" name="id" data-th-value="${form.id}" /></p>
+    <p>付与年月:
+      <select name="paymentYear" style="width: 120px;　padding-top: 5px; padding-bottom: 5px;">
+        <option value=""></option>
+        <option data-th-each="year : ${form.yearList}" data-th-value="${year}" data-th-text="${year}"></option>
+      </select>年
+      <select name="paymentMonth" style="width: 60px;　padding-top: 5px; padding-bottom: 5px;">
+        <option value=""></option>
+        <option data-th-each="month : ${form.monthList}" data-th-value="${month}" data-th-text="${month}"></option>
+      </select>月
+    </p>
+    <p>給与額：<input type="text" name="paymentAmount" data-th-value="${form.paymentAmount}" /></p>
+    <button type="submit">登録！</button>
+  </form>
+  <p><a data-th-href="@{/}">トップへ戻る</a></p>
+</body>
+</html>

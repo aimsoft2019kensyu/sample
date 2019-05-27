@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="jp.co.aimsoft.integration.mapper.TAttendanceMapper" >
+  <insert id="register" parameterType="jp.co.aimsoft.integration.entity.TAttendanceEntity">
+      INSERT INTO t_attendance (
+        id,
+        attendance_flg,
+        attendance_date,
+        attendance_time
+      )
+      VALUES (
+        #{id},
+        #{attendanceFlg},
+        #{attendanceDate},
+        #{attendanceTime}
+      )
+  </insert>
+  <select id="findOne" parameterType="jp.co.aimsoft.integration.entity.TAttendanceEntity" resultType="jp.co.aimsoft.integration.entity.TAttendanceEntity">
+      SELECT id, attendance_flg, attendance_date, attendance_time
+      FROM
+        t_attendance
+      WHERE
+        id = #{id}
+        AND attendance_flg = #{attendanceFlg}
+        AND attendance_date = #{attendanceDate}
+   </select>
+   <select id="searchById" parameterType="jp.co.aimsoft.integration.entity.TAttendanceEntity" resultType="jp.co.aimsoft.integration.entity.AttendanceListCustomEntity">
+      SELECT t_attendance.id, m_user.name, t_attendance.attendance_flg, t_attendance.attendance_date, t_attendance.attendance_time
+      FROM
+        t_attendance
+        INNER JOIN m_user 
+        ON t_attendance.id = m_user.id
+      WHERE
+        t_attendance.id = #{id}
+      ORDER BY t_attendance.attendance_date DESC
+   </select>
+   <update id="update" parameterType="jp.co.aimsoft.integration.entity.AttendanceUpdateCustomEntity">
+      UPDATE t_attendance
+      SET 
+        id = #{id}
+        ,attendance_flg = #{attendanceFlg}
+        ,attendance_date = #{attendanceDate}
+        ,attendance_time = #{attendanceTime}
+      WHERE
+        id = #{id}
+        AND attendance_flg = #{targetAttendanceFlg}
+        AND attendance_date = #{targetAttendanceDate}
+   </update>
+   <delete id="deleteOne" parameterType="jp.co.aimsoft.integration.entity.TAttendanceEntity">
+      DELETE FROM t_attendance
+      WHERE
+        id = #{id}
+        AND attendance_flg = #{attendanceFlg}
+        AND attendance_date = #{attendanceDate}
+   </delete>
+</mapper>
