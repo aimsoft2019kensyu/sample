@@ -2,8 +2,11 @@ package jp.co.aimsoft.presentation.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -80,7 +83,17 @@ public class UserController {
 	 * @return ModelAndView
 	 */
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
-	public ModelAndView register(@ModelAttribute UserForm form) {
+	public ModelAndView register(@ModelAttribute("form") @Valid UserForm form, BindingResult result) {
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("form", form);
+
+		// BeanValidationによるエラーを捕捉する
+		if (result.hasErrors()) {
+
+			modelAndView.setViewName("user/registration");
+			return modelAndView;
+		}
 
 		MUser user = createMUser(form);
 
@@ -91,9 +104,6 @@ public class UserController {
 		} catch (BusinessException e) {
 			errorMessage = e.getMessage();
 		}
-
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("form", form);
 
 		if (errorMessage != null) {
 			// エラーの場合は再表示
@@ -182,9 +192,9 @@ public class UserController {
 	private MUser createMUser(UserForm form) {
 
 		MUser user = new MUser();
-		user.setId(form.getId());
+		user.setId(Long.parseLong(form.getId()));
 		user.setName(form.getName());
-		user.setAge(form.getAge());
+		user.setAge(Long.parseLong(form.getAge()));
 		user.setBelongGroup(form.getBelongGroup());
 
 		return user;
