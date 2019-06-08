@@ -8,13 +8,11 @@ import java.lang.annotation.Target;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
-import javax.validation.constraints.Pattern;
 
 @Target({ ElementType.FIELD }) // フィールドに有効なアノテーション
 @Retention(RetentionPolicy.RUNTIME) // 保持されるスコープ。よくわからないけどRUNTIMEで安定。
 @Documented // javadocアノテーションにアノテーションのリンクを張れるようになる。
-@Constraint(validatedBy = {})
-@Pattern(regexp = "[0-9]+", message = "{aimsoft.numeric.message}")
+@Constraint(validatedBy = { NumericConstraint.class })
 public @interface Numeric {
 
 	String message() default "{aimsoft.numeric.message}";

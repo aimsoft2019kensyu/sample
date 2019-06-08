@@ -3,6 +3,7 @@ package jp.co.aimsoft.presentation.form;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import jp.co.aimsoft.common.constraint.HalfWidthCharacter;
 import jp.co.aimsoft.common.constraint.NotNumeric;
 import jp.co.aimsoft.common.constraint.Numeric;
 
@@ -18,14 +19,11 @@ public class UserForm {
 	@Size(min = 1, max = 20)
 	private String name;
 
-	@NotEmpty
-	@Numeric
-	@Size(min = 1, max = 3)
+	@HalfWidthCharacter(message = "半角文字で入力して")
 	private String age;
 
-	@NotEmpty
 	@NotNumeric
-	@Size(min = 1, max = 50)
+	@Size(min = 1, max = 50, message = "1-20文字で入力しなさい")
 	private String belongGroup;
 
 	public String getId() {

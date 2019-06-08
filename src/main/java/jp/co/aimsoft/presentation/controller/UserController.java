@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.aimsoft.business.model.MUser;
+import jp.co.aimsoft.business.model.SessionBean;
 import jp.co.aimsoft.business.service.UserService;
 import jp.co.aimsoft.common.exception.BusinessException;
 import jp.co.aimsoft.presentation.form.UserForm;
@@ -24,8 +25,13 @@ public class UserController {
 	@Autowired
 	private UserService service;
 
+	@Autowired
+	private SessionBean session;
+
 	@RequestMapping(value = "/registration/show", method = RequestMethod.GET)
 	public ModelAndView registrationShow() {
+
+		session.setId(999999L);
 
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("form", new UserForm());
@@ -112,6 +118,8 @@ public class UserController {
 		} else {
 			modelAndView.setViewName("user/complete");
 		}
+		// セッション説明用
+		modelAndView.addObject("sessionBean", session);
 
 		return modelAndView;
 	}
